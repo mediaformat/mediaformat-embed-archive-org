@@ -1,0 +1,27 @@
+{
+	"name": "archive-embed",
+	"version": "0.1.0",
+	"description": "Embed content from Archive.org.",
+	"author": "mediaformat",
+	"license": "GPL-2.0-or-later",
+	"main": "build/index.js",
+	"scripts": {
+		"build": "wp-scripts build --webpack-copy-php",
+		"format": "wp-scripts format",
+		"lint:js": "wp-scripts lint-js",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"start": "wp-scripts start --webpack-copy-php",
+		"env": "wp-env"
+	},
+	"dependencies": {
+		"@wordpress/blocks": "^15.3.0",
+		"@wordpress/i18n": "^6.3.0",
+		"@wordpress/primitives": "^4.30.0",
+		"compose": "^0.1.2"
+	},
+	"devDependencies": {
+		"@wordpress/eslint-plugin": "^22.16.0",
+		"@wordpress/scripts": "^30.23.0"
+	}
+}
