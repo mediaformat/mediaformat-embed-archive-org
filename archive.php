@@ -1,14 +1,14 @@
 <?php 
 /**
- * Plugin Name: Archive.org Block
+ * Plugin Name: Embed Archive.org
  * Description: Embed content from Archive.org using the core/embed block.
  * Version: 1.0.0
  * Author: Mediaformat
  * Author URI: https://mediaformat.org/
- * Text Domain: archive-embed
+ * Text Domain: embed-archive-org
  * License: GPLv2 or later
  * 
- * @package archive-embed
+ * @package embed-archive-org
  */
 
 // Prevent direct file access
