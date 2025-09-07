@@ -44,8 +44,7 @@ function archive_org_get_embed_html( $url ) {
  * @return string
  */
 function archive_org_get_identifier_from_url( $url ) {
-     if (!preg_match('#https?://archive\.org/(details|embed)/([^/\s]+)#i', $url, $matches)) {
-        error_log( 'archive_org_get_identifier_from_url: !match url: ' . print_r( $url, true ) );
+     if ( !preg_match('#https?://archive\.org/(details|embed)/([^/\s]+)#i', $url, $matches ) ) {
         return null;
     }
 
@@ -88,11 +87,7 @@ function archive_org_fetch_metadata( $identifier ) {
     ]);
     
     if ( is_wp_error( $response ) ) {
-        error_log( 'fetch_metadata: is_wp_error' . print_r( $response, true ) );
-        return [
-            'title' => 'Archive.org Item',
-            'description' => 'Unable to fetch metadata'
-        ];
+        return null;
     }
 
     $body = wp_remote_retrieve_body( $response );
@@ -176,7 +171,6 @@ function editor_embed_archive_org( $response, $handler, $request ) {
         
         // Generate embed HTML
         $embed_html = archive_org_get_embed_html( $url );
-        // error_log( 'oembed_archive_block: html: ' . print_r( $embed_html, true ) );
 
         if ( $embed_html ) {
             $args = $request->get_params();
