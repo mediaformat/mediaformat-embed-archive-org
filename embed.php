@@ -44,7 +44,7 @@ function archive_org_get_embed_html( $url ) {
  * @return string
  */
 function archive_org_get_identifier_from_url( $url ) {
-     if ( !preg_match('#https?://archive\.org/(details|embed)/([^/\s]+)#i', $url, $matches ) ) {
+     if ( !preg_match( '#https?://archive\.org/(details|embed)/([^/\s]+)#i', $url, $matches ) ) {
         return null;
     }
 
@@ -63,7 +63,7 @@ function archive_org_get_identifier_from_url( $url ) {
  */
 function archive_org_oembed_handler( $result, $url, $args ) {
     // Validate Archive.org URL
-    if (!preg_match('#https?://archive\.org/(details|embed)/([^/\s]+)#i', $url, $matches)) {
+    if ( !preg_match('#https?://archive\.org/(details|embed)/([^/\s]+)#i', $url, $matches ) ) {
         return $result;
     }
     return archive_org_get_embed_html( $url );
