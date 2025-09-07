@@ -6,6 +6,7 @@
  * Author: Mediaformat
  * Author URI: https://mediaformat.org/
  * Text Domain: archive-embed
+ * License: GPLv2 or later
  * 
  * @package archive-embed
  */
