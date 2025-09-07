@@ -1,5 +1,5 @@
 {
-	"name": "archive-embed",
+	"name": "embed-archive-org",
 	"version": "0.1.0",
 	"description": "Embed content from Archive.org.",
 	"author": "mediaformat",
@@ -10,7 +10,7 @@
 		"format": "wp-scripts format",
 		"lint:js": "wp-scripts lint-js",
 		"packages-update": "wp-scripts packages-update",
-		"plugin-zip": "wp-scripts plugin-zip",
+		"plugin-zip": "wp-scripts plugin-zip --root-folder='embed-archive-org'",
 		"start": "wp-scripts start --webpack-copy-php",
 		"env": "wp-env"
 	},
