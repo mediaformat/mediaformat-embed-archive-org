@@ -175,7 +175,7 @@ function editor_embed_archive_org( $response, $handler, $request ) {
         if ( $embed_html ) {
             $args = $request->get_params();
             $data = (object) array(
-                'provider_name' => 'Embed Handler',
+                'provider_name' => 'Archive.org',
                 'html'          => $embed_html,
                 'scripts'       => array(),
             );

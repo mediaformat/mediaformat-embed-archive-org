@@ -33,9 +33,8 @@ registerBlockVariation( 'core/embed', {
 	category: 'embed',
 	keywords: [ 'archive', 'internet archive', 'digital library' ],
 	attributes: {
-		className: 'archive-org',
 		providerNameSlug: 'archive-org',
 	},
 	patterns: [ /^https?:\/\/(www\.)?archive\.org\/.+/i ],
-	isActive: [ 'className' ],
+	isActive: [ 'providerNameSlug' ],
 } );
