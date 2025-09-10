@@ -1,4 +1,4 @@
-=== Archive.org Block ===
+=== Embed Archive.org ===
 Contributors: mediaformat
 Tags: embed, archive.org
 Requires at least: 5.4
