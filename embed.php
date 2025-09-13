@@ -10,14 +10,14 @@
  *
  * @return void
  */
-function archive_org_register_embed_provider() {
+function mf_embed_archive_org_register_embed_provider() {
     wp_embed_register_handler(
         'archive_org',
         '#https://archive\.org/(details|embed)\?.*#i', 
         'archive_oembed_callback'
     );
 }
-add_action( 'init', 'archive_org_register_embed_provider' );
+add_action( 'init', 'mf_embed_archive_org_register_embed_provider' );
 
 /**
  * Return archive.org iFrame HTML
@@ -25,14 +25,14 @@ add_action( 'init', 'archive_org_register_embed_provider' );
  * @param string $url
  * @return string
  */
-function archive_org_get_embed_html( $url ) {
-    $identifier = archive_org_get_identifier_from_url( $url );
+function mf_embed_archive_org_get_embed_html( $url ) {
+    $identifier = mf_embed_archive_org_get_identifier_from_url( $url );
 
     // Fetch metadata
-    $metadata = archive_org_fetch_metadata( $identifier );
+    $metadata = mf_embed_archive_org_fetch_metadata( $identifier );
     
     // Generate embed HTML
-    $embed_html = archive_org_generate_embed_html( $identifier, $metadata );
+    $embed_html = mf_embed_archive_org_generate_embed_html( $identifier, $metadata );
 
     return $embed_html;
 }
@@ -43,7 +43,7 @@ function archive_org_get_embed_html( $url ) {
  * @param string $url
  * @return string
  */
-function archive_org_get_identifier_from_url( $url ) {
+function mf_embed_archive_org_get_identifier_from_url( $url ) {
      if ( !preg_match( '#https?://archive\.org/(details|embed)/([^/\s]+)#i', $url, $matches ) ) {
         return null;
     }
@@ -61,14 +61,14 @@ function archive_org_get_identifier_from_url( $url ) {
  * @param string|array $args   Optional. Additional arguments for retrieving embed HTML.
  *                             See wp_oembed_get() for accepted arguments. Default empty.
  */
-function archive_org_oembed_handler( $result, $url, $args ) {
+function mf_embed_archive_org_oembed_handler( $result, $url, $args ) {
     // Validate Archive.org URL
     if ( !preg_match( '#https?://archive\.org/(details|embed)/([^/\s]+)#i', $url, $matches ) ) {
         return $result;
     }
-    return archive_org_get_embed_html( $url );
+    return mf_embed_archive_org_get_embed_html( $url );
 }
-add_filter('pre_oembed_result', 'archive_org_oembed_handler', 10, 3);
+add_filter('pre_oembed_result', 'mf_embed_archive_org_oembed_handler', 10, 3);
 
 /**
  * Fetch Metadata from Archive.org
@@ -76,7 +76,7 @@ add_filter('pre_oembed_result', 'archive_org_oembed_handler', 10, 3);
  * @param string $identifier
  * @return array
  */
-function archive_org_fetch_metadata( $identifier ) {
+function mf_embed_archive_org_fetch_metadata( $identifier ) {
     $api_url = "https://archive.org/metadata/{$identifier}";
     
     $response = wp_remote_get( $api_url, [
@@ -107,7 +107,7 @@ function archive_org_fetch_metadata( $identifier ) {
  * @param array $metadata
  * @return string iframe html
  */
-function archive_org_generate_embed_html( $identifier, $metadata ) {
+function mf_embed_archive_org_generate_embed_html( $identifier, $metadata ) {
     
     // Construct embed URL with additional parameters
     $embed_url = "https://archive.org/embed/{$identifier}";
@@ -150,11 +150,11 @@ function archive_org_generate_embed_html( $identifier, $metadata ) {
  * @param int $post_id The post ID.
  * @return int The post ID.
  */
-function register_editor_embed_hook( $post_id ) {
-    add_filter( 'rest_request_after_callbacks', 'editor_embed_archive_org', 10, 3 );
+function mf_embed_register_editor_embed_hook( $post_id ) {
+    add_filter( 'rest_request_after_callbacks', 'mf_embed_archive_org_editor', 10, 3 );
     return $post_id;
 }
-add_filter( 'oembed_request_post_id', 'register_editor_embed_hook' );
+add_filter( 'oembed_request_post_id', 'mf_embed_register_editor_embed_hook' );
 
 /**
  * Returns html for the core/embed request back to the Editor.
@@ -165,12 +165,12 @@ add_filter( 'oembed_request_post_id', 'register_editor_embed_hook' );
  *
  * @return WP_REST_Response|WP_Error The response to send to the client.
  */
-function editor_embed_archive_org( $response, $handler, $request ) {
+function mf_embed_archive_org_editor( $response, $handler, $request ) {
     if ( is_wp_error( $response ) && 'oembed_invalid_url' === $response->get_error_code() ) {
         $url  = $request->get_param( 'url' );
         
         // Generate embed HTML
-        $embed_html = archive_org_get_embed_html( $url );
+        $embed_html = mf_embed_archive_org_get_embed_html( $url );
 
         if ( $embed_html ) {
             $args = $request->get_params();

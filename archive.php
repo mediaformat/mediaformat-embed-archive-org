@@ -1,6 +1,6 @@
 <?php 
 /**
- * Plugin Name: Embed Archive.org
+ * Plugin Name: Media embed for Archive.org
  * Description: Embed content from Archive.org using the core/embed block.
  * Version: 1.0.0
  * Author: Mediaformat
@@ -23,7 +23,7 @@ require 'embed.php';
  *
  * @return void
  */
-function archive_blocks_enqueue_editor_assets(): void {
+function mf_embed_archive_blocks_enqueue_editor_assets(): void {
     if ( is_admin() ) {
         $dir = __DIR__;
 		$editor_script_asset_path = "$dir/build/index.asset.php";
@@ -38,4 +38,4 @@ function archive_blocks_enqueue_editor_assets(): void {
 		);
 	}
 }
-add_action( 'enqueue_block_assets', 'archive_blocks_enqueue_editor_assets' );
+add_action( 'enqueue_block_assets', 'mf_embed_archive_blocks_enqueue_editor_assets' );
