@@ -7,14 +7,23 @@
 	"main": "build/index.js",
 	"scripts": {
 		"build": "wp-scripts build --webpack-copy-php",
-		"format": "wp-scripts format",
+		"format": "npm run format:js && npm run format:php",
+		"format:js": "wp-scripts format",
+		"format:php": "composer run format",
+		"lint": "npm run lint:js && npm run lint:php",
 		"lint:js": "wp-scripts lint-js",
+		"lint:php": "composer run lint",
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "wp-scripts plugin-zip --root-folder='embed-archive-org'",
 		"start": "wp-scripts start --webpack-copy-php",
 		"env": "wp-env"
 	},
-  "files": [ "plugin.php", "vendor", "build" ],
+  	"files": [ 
+		"plugin.php",
+		"build",
+		"vendor/autoload.php",
+		"vendor/composer"
+	],
 	"dependencies": {
 		"@wordpress/blocks": "^15.3.0",
 		"@wordpress/i18n": "^6.3.0",
