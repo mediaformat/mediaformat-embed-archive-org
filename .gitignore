@@ -1,4 +1,22 @@
-node_modules
+# Ignore the vendor directory
+vendor/
+
+# Ignore the composer.lock file (optional, not recommended)
+# composer.lock
+
+# Ignore node_modules directory if you are using npm
+node_modules/
+
+# Ignore npm-debug.log file if you are using npm
+npm-debug.log
+
+# Ignore .DS_Store files on macOS
+.DS_Store
+
+# Ignore log files
+*.log
+
+
 build
 .DS_Store
 *.zip

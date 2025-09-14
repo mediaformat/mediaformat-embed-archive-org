@@ -20,10 +20,10 @@ if (!defined('ABSPATH')) {
 
 \define( 'MF_EMBED_ARCHIVE_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
-// Include Composer's autoload file.
-if ( \file_exists( \plugin_dir_path( __FILE__ ) . 'vendor/autoload.php' ) ) {
-    require_once \plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
-} else {
+if ( ! class_exists( EmbedArchiveOrg\EditorEmbed::class ) && file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
+    require_once __DIR__ . '/vendor/autoload.php';
+}
+if ( ! class_exists( EmbedArchiveOrg\EditorEmbed::class ) ) {
     \wp_trigger_error( 'Media Embed for Archive.org plugin: Composer autoload file not found. Please run `composer install`.', E_USER_ERROR );
     return;
 }
