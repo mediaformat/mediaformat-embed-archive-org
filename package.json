@@ -14,7 +14,7 @@
 		"start": "wp-scripts start --webpack-copy-php",
 		"env": "wp-env"
 	},
-  "files": [ "archive.php", "embed.php", "build" ],
+  "files": [ "plugin.php", "vendor", "build" ],
 	"dependencies": {
 		"@wordpress/blocks": "^15.3.0",
 		"@wordpress/i18n": "^6.3.0",

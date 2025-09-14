@@ -1,0 +1,17 @@
+{
+    "name": "mediaformat/embed-archive-org",
+    "description": "Embed media from Archive.org using the core/embed block.",
+    "type": "wordpress-plugin",
+    "autoload": {
+        "psr-4": {
+            "EmbedArchiveOrg\\": "includes/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Django Doucet",
+            "email": "mediaformat.ux@gmail.com"
+        }
+    ],
+    "require": {}
+}
