@@ -6,29 +6,15 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit21a9d77b90e03eb2af617143cc539b81
 {
-    public static $prefixLengthsPsr4 = array (
-        'E' => 
-        array (
-            'EmbedArchiveOrg\\' => 16,
-        ),
-    );
-
-    public static $prefixDirsPsr4 = array (
-        'EmbedArchiveOrg\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/includes',
-        ),
-    );
-
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'EmbedArchiveOrg\\BlockRender' => __DIR__ . '/../..' . '/includes/class-block-render.php',
+        'EmbedArchiveOrg\\EditorEmbed' => __DIR__ . '/../..' . '/includes/class-editor-embed.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit21a9d77b90e03eb2af617143cc539b81::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit21a9d77b90e03eb2af617143cc539b81::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInit21a9d77b90e03eb2af617143cc539b81::$classMap;
 
         }, null, ClassLoader::class);

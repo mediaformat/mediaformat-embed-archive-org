@@ -14,7 +14,7 @@ use \EmbedArchiveOrg\BlockRender;
  */
 class EditorEmbed {
 
-	public function __construct() {
+	public static function init() {
         add_action( 'enqueue_block_assets', [ self::class, 'enqueue_editor_assets'] );
         add_filter( 'oembed_request_post_id', [ self::class, 'editor_embed_hook' ] );
 	}
@@ -63,6 +63,7 @@ class EditorEmbed {
      * @return WP_REST_Response|WP_Error The response to send to the client.
      */
     public static function editor_embed_request( $response, $handler, $request ) {
+
         if ( \is_wp_error( $response ) && 'oembed_invalid_url' === $response->get_error_code() ) {
             $url  = $request->get_param( 'url' );
             

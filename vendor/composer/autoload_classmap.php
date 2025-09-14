@@ -7,4 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'EmbedArchiveOrg\\BlockRender' => $baseDir . '/includes/class-block-render.php',
+    'EmbedArchiveOrg\\EditorEmbed' => $baseDir . '/includes/class-editor-embed.php',
 );

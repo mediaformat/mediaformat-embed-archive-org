@@ -3,9 +3,7 @@
     "description": "Embed media from Archive.org using the core/embed block.",
     "type": "wordpress-plugin",
     "autoload": {
-        "psr-4": {
-            "EmbedArchiveOrg\\": "includes/"
-        }
+        "classmap": ["includes/"]
     },
     "authors": [
         {

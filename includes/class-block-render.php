@@ -11,8 +11,7 @@ namespace EmbedArchiveOrg;
  */
 class BlockRender {
 
-	public function __construct() {
-        // add_action( 'init', [ self::class, 'register_embed_provider' ] );
+	public static function init() {
         add_filter( 'pre_oembed_result', [ self::class, 'archive_org_oembed_handler' ], 10, 3);
 	}
 
@@ -30,6 +29,7 @@ class BlockRender {
         if ( !preg_match( '#https?://archive\.org/(details|embed)/([^/\s]+)#i', $url, $matches ) ) {
             return $result;
         }
+        
         return self::get_embed_html( $url );
     }
 
