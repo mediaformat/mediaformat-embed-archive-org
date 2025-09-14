@@ -31,7 +31,14 @@ registerBlockVariation( 'core/embed', {
 		src: archiveIcon,
 	},
 	category: 'embed',
-	keywords: [ 'archive', 'internet archive', 'digital library', 'video', 'audio', 'podcast' ],
+	keywords: [
+		'archive',
+		'internet archive',
+		'digital library',
+		'video',
+		'audio',
+		'podcast',
+	],
 	attributes: {
 		providerNameSlug: 'archive-org',
 	},
