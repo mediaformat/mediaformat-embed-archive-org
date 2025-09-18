@@ -74,7 +74,7 @@ class Editor {
 			$url = $request->get_param( 'url' );
 
 			// Get embed HTML.
-			$embed_html = BlockRender::get_embed_html( $url );
+			$embed_html = Render::get_embed_html( $url );
 
 			if ( $embed_html ) {
 				$args = $request->get_params();
@@ -84,14 +84,10 @@ class Editor {
 					'scripts'       => array(),
 				);
 
-				/**
- * This filter is documented in wp-includes/class-wp-oembed.php
-*/
+				// This filter is documented in wp-includes/class-wp-oembed.php.
 				$data->html = \apply_filters( 'oembed_result', $data->html, $url, $args );
 
-				/**
- * This filter is documented in wp-includes/class-wp-oembed-controller.php
-*/
+				// This filter is documented in wp-includes/class-wp-oembed-controller.php.
 				$ttl = \apply_filters( 'rest_oembed_ttl', DAY_IN_SECONDS, $url, $args );
 
 				\set_transient( 'oembed_' . md5( serialize( $args ) ), $data, $ttl ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize
