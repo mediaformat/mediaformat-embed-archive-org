@@ -9,8 +9,7 @@
 	},
 	"authors": [
 		{
-			"name": "Django Doucet",
-			"email": "mediaformat.ux@gmail.com"
+			"name": "Django Doucet"
 		}
 	],
 	"require-dev": {
@@ -19,7 +18,9 @@
 	"config": {
 		"allow-plugins": {
 			"dealerdirect/phpcodesniffer-composer-installer": true
-		}
+		},
+		"optimize-autoloader": true,
+		"classmap-authoritative": true
 	},
 	"scripts": {
 		"format": "./vendor/bin/phpcbf -ps . --standard=WordPress --ignore=vendor,node_modules,src,build --report-summary --report-source || true",
