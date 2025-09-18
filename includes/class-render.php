@@ -104,7 +104,7 @@ class Render {
 
 		return array(
 			'mediatype'   => $data['metadata']['mediatype'] ?? '',
-			'title'       => $data['metadata']['title'] ?? 'Untitled',
+			'title'       => $data['metadata']['title'] ?? __( 'Untitled', 'embed-archive-org' ),
 			'description' => $data['metadata']['description'] ?? '',
 		);
 	}
