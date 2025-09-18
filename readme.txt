@@ -10,3 +10,5 @@ Embed media from Archive.org
 
 == Description ==
 Embed audio, video, and text content from Archive.org using the core/embed block. 
+
+Archive.org name and logo are trademarked and belong to the Internet archive.
