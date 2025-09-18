@@ -21,6 +21,7 @@
 	"files": [
 		"plugin.php",
 		"build",
+		"includes",
 		"composer.json",
 		"vendor/autoload.php",
 		"vendor/composer"
