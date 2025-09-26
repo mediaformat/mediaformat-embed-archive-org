@@ -32,7 +32,7 @@ class Editor {
 	 */
 	public static function enqueue_editor_assets(): void {
 		if ( \is_admin() ) {
-			$dir                      = MF_EMBED_ARCHIVE_PLUGIN_DIR;
+			$dir                      = MEDIAFORMAT_EMBED_ARCHIVE_PLUGIN_DIR;
 			$editor_script_asset_path = "$dir/build/index.asset.php";
 			$editor_script_asset      = include $editor_script_asset_path;
 
