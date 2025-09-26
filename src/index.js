@@ -25,8 +25,8 @@ const archiveIcon = (
 
 registerBlockVariation( 'core/embed', {
 	name: 'mediaformat/embed-archive-org',
-	title: __( 'Archive.org Embed', 'embed-archive-org' ),
-	description: __( 'Embed media from Archive.org', 'embed-archive-org' ),
+	title: __( 'Archive.org Embed', 'mediaformat-embed-archive-org' ),
+	description: __( 'Embed media from Archive.org', 'mediaformat-embed-archive-org' ),
 	icon: {
 		src: archiveIcon,
 	},
