@@ -5,10 +5,10 @@
  * Version: 1.0.0
  * Author: Mediaformat
  * Author URI: https://mediaformat.org/
- * Text Domain: embed-archive-org
+ * Text Domain: mediaformat-embed-archive-org
  * License: GPLv2 or later
  *
- * @package embed-archive-org
+ * @package mediaformat-embed-archive-org
  */
 
 namespace EmbedArchiveOrg;
