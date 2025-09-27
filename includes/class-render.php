@@ -5,7 +5,7 @@
  * @package EmbedArchiveOrg
  */
 
-namespace EmbedArchiveOrg;
+namespace MediaFormat\EmbedArchiveOrg;
 
 /**
  *  Front end Render class

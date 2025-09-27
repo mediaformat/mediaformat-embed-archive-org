@@ -5,10 +5,10 @@
  * @package EmbedArchiveOrg
  */
 
-namespace EmbedArchiveOrg;
+namespace MediaFormat\EmbedArchiveOrg;
 
 use WP_REST_Response;
-use EmbedArchiveOrg\Render;
+use MediaFormat\EmbedArchiveOrg\Render;
 
 /**
  * Editor class
@@ -90,7 +90,7 @@ class Editor {
 				// This filter is documented in wp-includes/class-wp-oembed-controller.php.
 				$ttl = \apply_filters( 'rest_oembed_ttl', DAY_IN_SECONDS, $url, $args );
 
-				\set_transient( 'oembed_' . md5( serialize( $args ) ), $data, $ttl ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize
+				\set_transient( 'mediaformat_archive_org_oembed_' . md5( serialize( $args ) ), $data, $ttl ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize
 
 				$response = new WP_REST_Response( $data );
 			}
