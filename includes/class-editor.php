@@ -38,7 +38,7 @@ class Editor {
 
 			\wp_enqueue_script(
 				'block-editor',
-				MEDIAFORMAT_EMBED_ARCHIVE_PLUGIN_URL . "build/index.js",
+				MEDIAFORMAT_EMBED_ARCHIVE_PLUGIN_URL . 'build/index.js',
 				$editor_script_asset['dependencies'],
 				$editor_script_asset['version'],
 				true
