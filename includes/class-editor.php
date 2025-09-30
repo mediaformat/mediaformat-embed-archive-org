@@ -21,8 +21,8 @@ class Editor {
 	 * @return void
 	 */
 	public static function init() {
-		add_action( 'enqueue_block_assets', array( self::class, 'enqueue_editor_assets' ) );
-		add_filter( 'oembed_request_post_id', array( self::class, 'editor_embed_hook' ) );
+		\add_action( 'enqueue_block_assets', array( self::class, 'enqueue_editor_assets' ) );
+		\add_filter( 'oembed_request_post_id', array( self::class, 'editor_embed_hook' ) );
 	}
 
 	/**
@@ -38,7 +38,7 @@ class Editor {
 
 			\wp_enqueue_script(
 				'block-editor',
-				\plugins_url( 'build/index.js', __FILE__ ),
+				MEDIAFORMAT_EMBED_ARCHIVE_PLUGIN_URL . "build/index.js",
 				$editor_script_asset['dependencies'],
 				$editor_script_asset['version'],
 				true

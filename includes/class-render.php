@@ -18,7 +18,7 @@ class Render {
 	 * @return void
 	 */
 	public static function init() {
-		add_filter( 'pre_oembed_result', array( self::class, 'archive_org_oembed_handler' ), 10, 2 );
+		\add_filter( 'pre_oembed_result', array( self::class, 'archive_org_oembed_handler' ), 10, 2 );
 	}
 
 	/**
