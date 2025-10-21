@@ -1,5 +1,9 @@
-# Ignore the vendor directory
-vendor/
+# Ignore vendor directory
+**/bin
+**/dealerdirect
+**/phpcsstandards
+**/squizlabs
+**/wp-coding-standards
 
 # Ignore the composer.lock file (optional, not recommended)
 # composer.lock
@@ -16,6 +20,5 @@ npm-debug.log
 # Ignore log files
 *.log
 
-
-build
+# Ignore zip files
 *.zip

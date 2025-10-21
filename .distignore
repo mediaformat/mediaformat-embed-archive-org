@@ -4,7 +4,6 @@
 /node_modules
 /src
 /tests
-/vendor
 
 .distignore
 .DS_Store
