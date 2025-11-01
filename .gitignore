@@ -22,3 +22,6 @@ npm-debug.log
 
 # Ignore zip files
 *.zip
+
+# Ignore banner file
+banner.svg
