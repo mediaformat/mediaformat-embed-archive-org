@@ -1,6 +1,6 @@
 {
-	"name": "embed-archive-org",
-	"version": "0.1.0",
+	"name": "mediaformat-embed-archive-org",
+	"version": "1.0.3",
 	"description": "Embed content from Archive.org.",
 	"author": "mediaformat",
 	"license": "GPL-2.0-or-later",
