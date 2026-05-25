@@ -67,10 +67,8 @@ class Render {
 	 */
 	private static function get_identifier_from_url( $url ) {
 		if ( ! \preg_match( '#https?://archive\.org/(details|embed)/([^/\s]+)#i', $url, $matches ) ) {
-			error_log( 'get_identifier_from_url: !$matches: ' . print_r( $matches, true ) );
 			return null;
 		}
-		error_log( 'get_identifier_from_url: $matches: ' . print_r( $matches, true ) );
 
 		// Extract identifier.
 		return $matches[2];
