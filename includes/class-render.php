@@ -5,7 +5,7 @@
  * @package EmbedArchiveOrg
  */
 
-namespace EmbedArchiveOrg;
+namespace MediaFormat\EmbedArchiveOrg;
 
 /**
  *  Front end Render class
@@ -18,7 +18,7 @@ class Render {
 	 * @return void
 	 */
 	public static function init() {
-		add_filter( 'pre_oembed_result', array( self::class, 'archive_org_oembed_handler' ), 10, 2 );
+		\add_filter( 'pre_oembed_result', array( self::class, 'archive_org_oembed_handler' ), 10, 2 );
 	}
 
 	/**
@@ -32,8 +32,10 @@ class Render {
 	public static function archive_org_oembed_handler( $result, $url ) {
 		// Validate Archive.org URL.
 		if ( ! preg_match( '#https?://archive\.org/(details|embed)/([^/\s]+)#i', $url, $matches ) ) {
+			error_log( 'archive_org_oembed_handler: !$matches: ' . print_r( $matches, true ) );
 			return $result;
 		}
+		error_log( 'archive_org_oembed_handler: $matches: ' . print_r( $matches, true ) );
 
 		return self::get_embed_html( $url );
 	}
@@ -65,8 +67,10 @@ class Render {
 	 */
 	private static function get_identifier_from_url( $url ) {
 		if ( ! \preg_match( '#https?://archive\.org/(details|embed)/([^/\s]+)#i', $url, $matches ) ) {
+			error_log( 'get_identifier_from_url: !$matches: ' . print_r( $matches, true ) );
 			return null;
 		}
+		error_log( 'get_identifier_from_url: $matches: ' . print_r( $matches, true ) );
 
 		// Extract identifier.
 		return $matches[2];
@@ -104,7 +108,7 @@ class Render {
 
 		return array(
 			'mediatype'   => $data['metadata']['mediatype'] ?? '',
-			'title'       => $data['metadata']['title'] ?? 'Untitled',
+			'title'       => $data['metadata']['title'] ?? __( 'Untitled', 'mediaformat-embed-archive-org' ),
 			'description' => $data['metadata']['description'] ?? '',
 		);
 	}

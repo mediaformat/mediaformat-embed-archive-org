@@ -5,10 +5,10 @@
  * @package EmbedArchiveOrg
  */
 
-namespace EmbedArchiveOrg;
+namespace MediaFormat\EmbedArchiveOrg;
 
 use WP_REST_Response;
-use EmbedArchiveOrg\Render;
+use MediaFormat\EmbedArchiveOrg\Render;
 
 /**
  * Editor class
@@ -21,8 +21,8 @@ class Editor {
 	 * @return void
 	 */
 	public static function init() {
-		add_action( 'enqueue_block_assets', array( self::class, 'enqueue_editor_assets' ) );
-		add_filter( 'oembed_request_post_id', array( self::class, 'editor_embed_hook' ) );
+		\add_action( 'enqueue_block_assets', array( self::class, 'enqueue_editor_assets' ) );
+		\add_filter( 'oembed_request_post_id', array( self::class, 'editor_embed_hook' ) );
 	}
 
 	/**
@@ -32,13 +32,13 @@ class Editor {
 	 */
 	public static function enqueue_editor_assets(): void {
 		if ( \is_admin() ) {
-			$dir                      = MF_EMBED_ARCHIVE_PLUGIN_DIR;
+			$dir                      = MEDIAFORMAT_EMBED_ARCHIVE_PLUGIN_DIR;
 			$editor_script_asset_path = "$dir/build/index.asset.php";
 			$editor_script_asset      = include $editor_script_asset_path;
 
 			\wp_enqueue_script(
 				'block-editor',
-				\plugins_url( 'build/index.js', __FILE__ ),
+				MEDIAFORMAT_EMBED_ARCHIVE_PLUGIN_URL . 'build/index.js',
 				$editor_script_asset['dependencies'],
 				$editor_script_asset['version'],
 				true
@@ -69,12 +69,17 @@ class Editor {
 	 * @return WP_REST_Response|WP_Error The response to send to the client.
 	 */
 	public static function editor_embed_request( $response, $handler, $request ) {
-
+		error_log( 'editor_embed_request: $response: ' . print_r( $response, true ) );
 		if ( \is_wp_error( $response ) && 'oembed_invalid_url' === $response->get_error_code() ) {
+			if ( ! preg_match( '#https?://archive\.org/(details|embed)/([^/\s]+)#i', $request, $matches ) ) {
+				error_log( 'editor_embed_request: !$matches: ' . print_r( $matches, true ) );
+				// return $result;
+			}
+			error_log( 'editor_embed_request: $response: ' . print_r( $response, true ) );
 			$url = $request->get_param( 'url' );
 
 			// Get embed HTML.
-			$embed_html = BlockRender::get_embed_html( $url );
+			$embed_html = Render::get_embed_html( $url );
 
 			if ( $embed_html ) {
 				$args = $request->get_params();
@@ -84,17 +89,10 @@ class Editor {
 					'scripts'       => array(),
 				);
 
-				/**
- * This filter is documented in wp-includes/class-wp-oembed.php
-*/
 				$data->html = \apply_filters( 'oembed_result', $data->html, $url, $args );
-
-				/**
- * This filter is documented in wp-includes/class-wp-oembed-controller.php
-*/
 				$ttl = \apply_filters( 'rest_oembed_ttl', DAY_IN_SECONDS, $url, $args );
 
-				\set_transient( 'oembed_' . md5( serialize( $args ) ), $data, $ttl ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize
+				\set_transient( 'mediaformat_archive_org_oembed_' . md5( serialize( $args ) ), $data, $ttl ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize
 
 				$response = new WP_REST_Response( $data );
 			}
