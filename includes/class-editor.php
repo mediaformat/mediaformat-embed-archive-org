@@ -69,30 +69,31 @@ class Editor {
 	 * @return WP_REST_Response|WP_Error The response to send to the client.
 	 */
 	public static function editor_embed_request( $response, $handler, $request ) {
-
 		if ( \is_wp_error( $response ) && 'oembed_invalid_url' === $response->get_error_code() ) {
 			$url = $request->get_param( 'url' );
+			if ( preg_match( '#https?://archive\.org/(details|embed)/([^/\s]+)#i', $url, $matches ) ) {
 
-			// Get embed HTML.
-			$embed_html = Render::get_embed_html( $url );
-
-			if ( $embed_html ) {
-				$args = $request->get_params();
-				$data = (object) array(
-					'provider_name' => 'Archive.org',
-					'html'          => $embed_html,
-					'scripts'       => array(),
-				);
-
-				// This filter is documented in wp-includes/class-wp-oembed.php.
-				$data->html = \apply_filters( 'oembed_result', $data->html, $url, $args );
-
-				// This filter is documented in wp-includes/class-wp-oembed-controller.php.
-				$ttl = \apply_filters( 'rest_oembed_ttl', DAY_IN_SECONDS, $url, $args );
-
-				\set_transient( 'mediaformat_archive_org_oembed_' . md5( serialize( $args ) ), $data, $ttl ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize
-
-				$response = new WP_REST_Response( $data );
+				// Get embed HTML.
+				$embed_html = Render::get_embed_html( $url );
+	
+				if ( $embed_html ) {
+					$args = $request->get_params();
+					$data = (object) array(
+						'provider_name' => 'Archive.org',
+						'html'          => $embed_html,
+						'scripts'       => array(),
+					);
+	
+					// This filter is documented in wp-includes/class-wp-oembed.php.
+					$data->html = \apply_filters( 'oembed_result', $data->html, $url, $args );
+	
+					// This filter is documented in wp-includes/class-wp-oembed-controller.php.
+					$ttl = \apply_filters( 'rest_oembed_ttl', DAY_IN_SECONDS, $url, $args );
+	
+					\set_transient( 'mediaformat_archive_org_oembed_' . md5( serialize( $args ) ), $data, $ttl ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize
+	
+					$response = new WP_REST_Response( $data );
+				}
 			}
 		}
 

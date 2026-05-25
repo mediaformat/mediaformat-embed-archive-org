@@ -32,8 +32,10 @@ class Render {
 	public static function archive_org_oembed_handler( $result, $url ) {
 		// Validate Archive.org URL.
 		if ( ! preg_match( '#https?://archive\.org/(details|embed)/([^/\s]+)#i', $url, $matches ) ) {
+			error_log( 'archive_org_oembed_handler: !$matches: ' . print_r( $matches, true ) );
 			return $result;
 		}
+		error_log( 'archive_org_oembed_handler: $matches: ' . print_r( $matches, true ) );
 
 		return self::get_embed_html( $url );
 	}
