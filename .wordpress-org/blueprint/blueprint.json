@@ -1,0 +1,29 @@
+{
+	"landingPage": "/wp-admin/post.php?post=1&action=edit",
+	"login": true,
+	"features": {
+		"networking": true
+	},
+	"steps": [
+		{
+			"step": "resetData"
+		},
+		{
+			"step": "installPlugin",
+			"pluginZipFile": {
+				"resource": "wordpress.org/plugins",
+				"slug": "mediaformat-embed-archive-org"
+			},
+			"options": {
+				"activate": true
+			}
+		},
+		{
+			"step": "importWxr",
+			"file": {
+				"resource": "url",
+				"url": "https://raw.githubusercontent.com/mediaformat/main/mediaformat-embed-archive-org/.wordpress-org/blueprint/blueprint-content.xml"
+			}
+		}
+	]
+}
