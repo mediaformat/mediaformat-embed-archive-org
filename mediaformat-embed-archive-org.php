@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Media embed for Archive.org
  * Description: Embed media from Archive.org using the core/embed block.
- * Version: 1.1.3
+ * Version: 1.1.4
  * Author: Mediaformat
  * Author URI: https://mediaformat.org/
  * Text Domain: mediaformat-embed-archive-org

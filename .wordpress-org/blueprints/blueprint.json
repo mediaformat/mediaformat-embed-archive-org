@@ -22,7 +22,7 @@
 			"step": "importWxr",
 			"file": {
 				"resource": "url",
-				"url": "https://raw.githubusercontent.com/mediaformat/main/mediaformat-embed-archive-org/.wordpress-org/blueprint/blueprint-content.xml"
+				"url": "https://raw.githubusercontent.com/mediaformat/mediaformat-embed-archive-org/main/.wordpress-org/blueprints/blueprint-content.xml"
 			}
 		}
 	]
