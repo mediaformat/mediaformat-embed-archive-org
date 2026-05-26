@@ -3,7 +3,7 @@ Contributors: mediaformat
 Tags: embed, archive.org
 Requires at least: 5.4
 Tested up to: 7.0
-Stable tag: 1.0.3.1
+Stable tag: 1.1.0
 License: GPLv2 or later
 
 Embed media from Archive.org
@@ -27,7 +27,8 @@ The service is provided by the "Internet Archive": [terms of use](https://archiv
 * Plugin Banner remixes "Film archive storage in DR-Byen" by [DRs Kulturarvsprojekt](https://www.flickr.com/photos/69385801@N07) is licensed under [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/?ref=openverse).
 
 == Changelog == 
-= 1.0.x =
+= 1.1.0 =
+* Adds Live Preview
 * Update Plugin Readme
 = 1.0.3 =
 * Fixes issue where plugin tried to use Archive.org embed on non-Archive urls.

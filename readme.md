@@ -4,7 +4,8 @@
 > Embed audio, video, and text content from Archive.org using the core/embed block. 
 
 ## Changelog
-### 1.0.x
+### 1.1.0
+* Adds Live Preview
 * Update Plugin Readme
 ### 1.0.3
 * Fixes issue where plugin tried to use Archive.org embed on non-Archive urls.
