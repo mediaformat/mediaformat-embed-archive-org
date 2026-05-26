@@ -3,13 +3,13 @@ Contributors: mediaformat
 Tags: embed, archive.org
 Requires at least: 5.4
 Tested up to: 7.0
-Stable tag: 1.1.5
+Stable tag: 1.1.6
 License: GPLv2 or later
 
-Embed media from Archive.org
+Embed audio, video, and text content from Archive.org using a lightweight core/embed block variation. 
 
 == Description ==
-Embed audio, video, and text content from Archive.org using the core/embed block. 
+Embed audio, video, and text content from Archive.org using a lightweight core/embed block variation. 
 
 = Archive.org =
 When pasting an archive.org link into the Editor, the plugin connects to the Internet Archive's API to obtain information about the requested resource, it's needed to embed content from the Interent Archive.
